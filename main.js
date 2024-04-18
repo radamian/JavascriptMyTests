@@ -90,7 +90,7 @@ submitButton.addEventListener('click', function () {
 
 setCookie(pet._petname, pet._ownername, 7);
 
-setinlocalstorage("key", "value");
+setinlocalstorage(pet._ownername+" has a ", pet._type);
 
 // Function to display form data in HTML div
 function displayPetData(data, location) {
