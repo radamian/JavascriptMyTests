@@ -1,5 +1,5 @@
-import { setCookie, getCookie, setinlocalstorage } from "./modules/storage.js";
-console.log(setCookie, getCookie)
+//import { SetLocalStorage } from "./storage";
+//import { setCookie } from "./storage";
 
 // Get form and input elements
 const myform = document.getElementById("MyForm");
@@ -8,12 +8,21 @@ const ownernameInput = document.getElementById('ownername');
 const emailInput = document.getElementById('email');
 const petnameInput = document.getElementById('petname');
 const typeInput = document.getElementById('type');
-const weightInput = document.getElementById('weight'); // Get the element
-const ageInput = document.getElementById('age'); // Get the element
+const weightInput = document.getElementById('weight');
+const ageInput = document.getElementById('age');
 const genderInput = document.querySelector('input[name="selGender"]');
 const aggressiveInput = document.querySelector('input[name="aggressive"]');
 
-
+/*
+const ownername = ownernameInput.value.trim();
+const email = emailInput.value.trim();
+const petname = petnameInput.value.trim();
+const type = typeInput;
+const weight = weightInput;
+const age = ageInput;
+const gender = genderInput;
+const aggressive = aggressiveInput;
+*/
 
 
 
@@ -37,68 +46,55 @@ document.getElementById('checkOutDate').addEventListener('change', checkDates);
 
 myform.addEventListener('load', (event) => { event.preventDefault(); });
 
+
 // Add click event listener to handle form submission
 submitButton.addEventListener('click', function () {
+
+
+
+
     // Log the form data to the console
-
-    console.log(weightInput.value, parseFloat(weightInput.value));
-    console.log(ageInput.value, parseInt(ageInput.value));
-
-    let ownername = ownernameInput.value;
-    let email = emailInput.value;
-    let petname = petnameInput.value;
-    let type = typeInput.value;
-    let weight = parseFloat(weightInput.value); // Parse the value to float
-    let age = parseInt(ageInput.value); // Parse the value to integer
-    let gender = genderInput.value;
-    console.log(genderInput.value)
-    let aggressive = aggressiveInput.value;
-
-
-
     console.log({
-        ownername: ownername,
-        petname: petname,
-        type: type,
-        weight: weight,
-        age: age,
-        gender: gender,
-        aggressive: aggressive
+        ownername: ownername.value,
+        petname: petname.value,
+        type: type.value,
+        weight: weight.value,
+        age: age.value,
+        gender: gender.value,
+        aggressive: aggressive.value,
     });
 
-
-    const pet = {
-        _ownername: ownername,
-        _petname: petname,
-        _type: type,
-        _weight: weight,
-        _age: age,
-        _gender: gender,
-        _aggressive: aggressive,
-    };
-
-    const ownerinfo = {
-        _ownername: ownername,
-        _email: email
-    };
-
-    displayPetData(pet, "petview");
-
-    displayOwnerInfo(ownerinfo, "ownerview")
-
-    setCookie(pet._petname, pet._ownername, 7);
+    console.log("weight: " + weightInput.value);
+    console.log("weight: " + weight);
 
 
 
 
-    setinlocalstorage(pet._ownername + " has a ", pet._type);
 
+
+    //displayPetData(pet, "petview");
+    //displayOwnerInfo(ownerinfo, "ownerview");
+
+    //setCookie(pet.ownername, pet.petname, 7);
+
+    //SetLocalStorage(pet);
 
 });
 
-//setCookie(pet._petname, pet._ownername, 7);
+const pet = {
+    ownername: ownername,
+    petname: petname,
+    type: type,
+    weight: weight,
+    age: age,
+    gender: gender,
+    aggressive: aggressive,
+};
 
-//setinlocalstorage(pet._ownername + " has a ", pet._type);
+const ownerinfo = {
+    ownername: ownername,
+    email: email
+};
 
 // Function to display form data in HTML div
 function displayPetData(data, location) {
@@ -119,8 +115,5 @@ function displayOwnerInfo(data, location) {
             <p>Owner name: ${data._ownername}</p>
             <p>Email: ${data._email}</p> `;
 }
-
-
-
 
 
