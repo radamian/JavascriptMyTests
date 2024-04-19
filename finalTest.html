@@ -10,10 +10,11 @@
 
 <body>
     <div id="header">
-        <h1>Welcome to the pet clinic!</h1>
+        <h1>Welcome to the pet clinic!🐕😉</h1>
 
         <img id="petImage" src="cat.jpg" alt="Pet Image">
         <script>
+            /////////////////////////////click on the image to change the picture//////////////////////////////////////////
             function displayPetImage(callback) {
                 // Simulating fetching of pet images from a server
                 const petImages = [
@@ -47,10 +48,11 @@
             petImageElement.addEventListener('click', function () {
                 displayPetImage(displayImage);
             });
+            ///////////////////////////////////////////////////////////////////////
         </script>
     </div>
 
-    <h2>Pet clinic</h2>
+    <h2>Pet clinic 🏥🐶🐱</h2>
     <form id="MyForm" class="form">
 
         <section class="section_Owner_Info">
@@ -98,7 +100,7 @@
 
             <label>Aggressive:</label>
             <div>
-                <input type="radio" id="aggressive-true" name="aggressive" value="false">
+                <input type="radio" id="aggressive-true" name="aggressive" value="true">
                 <label for="aggressive-true">Yes</label>
                 <input type="radio" id="aggressive-false" name="aggressive" value="false" checked>
                 <label for="aggressive-false">No</label>

@@ -51,6 +51,7 @@ submitButton.addEventListener('click', function () {
     let weight = parseFloat(weightInput.value); // Parse the value to float
     let age = parseInt(ageInput.value); // Parse the value to integer
     let gender = genderInput.value;
+    console.log(genderInput.value)
     let aggressive = aggressiveInput.value;
 
 
@@ -85,12 +86,19 @@ submitButton.addEventListener('click', function () {
 
     displayOwnerInfo(ownerinfo, "ownerview")
 
+    setCookie(pet._petname, pet._ownername, 7);
+
+
+
+
+    setinlocalstorage(pet._ownername + " has a ", pet._type);
+
 
 });
 
-setCookie(pet._petname, pet._ownername, 7);
+//setCookie(pet._petname, pet._ownername, 7);
 
-setinlocalstorage(pet._ownername+" has a ", pet._type);
+//setinlocalstorage(pet._ownername + " has a ", pet._type);
 
 // Function to display form data in HTML div
 function displayPetData(data, location) {
