@@ -1,0 +1,40 @@
+<div id="header">
+        <h1>Welcome to the pet clinic!</h1>
+
+        <img id="petImage" src="cat.jpg" alt="Pet Image">
+        <script>
+            function displayPetImage(callback) {
+                // Simulating fetching of pet images from a server
+                const petImages = [
+                    'cat.jpg',
+                    'dog.jpeg',
+                    'bird.jpg',
+                    'fish.jpg',
+                    'reptile.jpg'
+                ];
+
+                // Generate a random index to select a pet image
+                const randomIndex = Math.floor(Math.random() * petImages.length);
+                const randomPetImage = petImages[randomIndex];
+
+                // Call the callback function with the selected image
+                callback(randomPetImage);
+            }
+
+            function displayImage(imageUrl) {
+                // Get the pet image element
+                const petImageElement = document.getElementById('petImage');
+
+                // Set the src attribute of the image element to display the pet image
+                petImageElement.src = imageUrl;
+            }
+
+            // Call the displayPetImage function with the displayImage callback
+            displayPetImage(displayImage);
+            // Add event listener to change image on click
+            const petImageElement = document.getElementById('petImage');
+            petImageElement.addEventListener('click', function () {
+                displayPetImage(displayImage);
+            });
+        </script>
+    </div>

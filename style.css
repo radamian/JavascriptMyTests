@@ -1,0 +1,65 @@
+.form {
+    background-color: #008CBA;
+
+}
+
+.section_Owner_info {
+    background-color: #0060ba;
+    align-items: center;
+}
+
+.section_Pet_info {
+    background-color: #b3d326;
+    align-items: center;
+}
+
+.conclusions {
+    background-color: #ba5400dc;
+
+}
+
+body {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    background-color: rgb(26, 112, 90)
+}
+
+button:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .two{
+    margin-right: auto;
+  }
+  
+
+hr {
+    margin: 2em auto;
+    /* centred margin */
+    height: 2px;
+    /* thickness of the line */
+    background-color: black;
+    /* colour of the line */
+    border: none;
+    /* no border */
+}
+
+
+#header {
+    text-align: center;
+    padding: 20px;
+    background-color: #eff1ea;
+}
+
+#petImage {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    /* Add cursor pointer to indicate it's clickable */
+}
