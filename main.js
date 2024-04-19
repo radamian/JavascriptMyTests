@@ -86,19 +86,13 @@ submitButton.addEventListener('click', function () {
 
     displayOwnerInfo(ownerinfo, "ownerview")
 
-    setCookie(pet._petname, pet._ownername, 7);
-
-
-
+    setCookie(pet._petname, pet._type, 7);
 
     setinlocalstorage(pet._ownername + " has a ", pet._type);
 
 
 });
 
-//setCookie(pet._petname, pet._ownername, 7);
-
-//setinlocalstorage(pet._ownername + " has a ", pet._type);
 
 // Function to display form data in HTML div
 function displayPetData(data, location) {

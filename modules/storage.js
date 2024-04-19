@@ -1,27 +1,16 @@
 
 
 // Function to set cookie
-/*
 function setCookie(cookieName, cookieValue, days) {
     let expires = "";
     if (days) {
         let date = new Date();
-        date.setTime(date.getTime() + (days * 10)); 
-        expires = "; expires=" + date.toUTCString();
+        date.setDate(date.getDate() + days); // Add days to the current date
+        expires = "; expires=" + date.toUTCString(); // Convert the date to UTC string format
     }
-     document.cookie = cookieName + "=" + (cookieValue || "") + expires + "; path=/";
+    document.cookie = cookieName + "=" + (cookieValue || "") + expires + "; path=/";
 }
-*/
-function setCookie(cookieName, cookieValue, days) {
-    let expires = "";
-    if (days) {
-        let date=new Date();
-        date.getDate()
 
-        expires = "; expires=" + date.setDate(date.getDate() + days);
-    }
-     document.cookie = cookieName + "=" + (cookieValue || "") + expires + "; path=/";
-}
 
 // Function to get cookie value by name
 function getCookie(cookieName) {
