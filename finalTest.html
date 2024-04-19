@@ -67,7 +67,7 @@
 
         <section class="section_Pet_info">
             <label for="petname">Name:</label>
-            <input type="text" id="petname" name="petname" value="Tomas">
+            <input type="text" id="petname" name="petname" value="Fifa">
 
             <label for="type">Type:</label>
             <select id="type" name="type">
@@ -90,20 +90,26 @@
 
             <label>Animal gender:</label>
             <div>
-                <input type="radio" id="male" name="selGender" value="male">
-                <label for="male">M</label><br>
-                <input type="radio" id="female" name="selGender" value="female">
-                <label for="female">F</label><br>
-                <input type="radio" id="unknown" name="selGender" value="unknown">
-                <label for="unknown">unknown</label>
+                <label>
+                    <input type="checkbox" id="male" name="selectGender" value="male"> Male
+                </label><br>
+                <label>
+                    <input type="checkbox" id="female" name="selectGender" value="female"> Female
+                </label><br>
+                <label>
+                    <input type="checkbox" id="unknown" name="selectGender" value="unknown"> Unknown
+                </label>
             </div>
+
 
             <label>Aggressive:</label>
             <div>
-                <input type="radio" id="aggressive-true" name="aggressive" value="true">
-                <label for="aggressive-true">Yes</label>
-                <input type="radio" id="aggressive-false" name="aggressive" value="false" checked>
-                <label for="aggressive-false">No</label>
+                <label>
+                    <input type="radio" name="aggressive" value="Yes"> Yes
+                </label>
+                <label>
+                    <input type="radio" name="aggressive" value="No"> No
+                </label>
             </div>
 
             <hr>

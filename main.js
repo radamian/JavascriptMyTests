@@ -1,6 +1,6 @@
-    import { setCookie, getCookie, setinlocalstorage } from "./modules/storage.js";
-    document.addEventListener('DOMContentLoaded', function () {
-    //console.log(setCookie, getCookie)
+import { setCookie, getCookie, setinlocalstorage } from "./modules/storage.js";
+
+document.addEventListener('DOMContentLoaded', function () {
 
     // Get form and input elements
     const myform = document.getElementById("MyForm");
@@ -9,20 +9,58 @@
     const emailInput = document.getElementById('email');
     const petnameInput = document.getElementById('petname');
     const typeInput = document.getElementById('type');
-    const weightInput = document.getElementById('weight'); // Get the element
-    const ageInput = document.getElementById('age'); // Get the element
+    const weightInput = document.getElementById('weight');
+    const ageInput = document.getElementById('age');
 
-    //const genderInput = document.querySelector('input[name="selGender"]');
-    const genderInput = document.querySelector("input [type='radio'][name='selGender']:checked"); // Select the checked radio button
+    // Get gender checkboxes
+    const maleCheckbox = document.getElementById('male');
+    const femaleCheckbox = document.getElementById('female');
+    const unknownCheckbox = document.getElementById('unknown');
 
-    const aggressiveInput = document.querySelector("input[name='aggressive']:checked");// Select the checked radio button
+    // Initialize genderInput to the initially checked checkbox
+    let genderInput = null;
 
+    // Add event listeners to each checkbox
+    maleCheckbox.addEventListener('change', function () {
+        if (maleCheckbox.checked) {
+            genderInput = maleCheckbox.value;
+            femaleCheckbox.checked = false;
+            unknownCheckbox.checked = false;
+        }
+    });
 
+    femaleCheckbox.addEventListener('change', function () {
+        if (femaleCheckbox.checked) {
+            genderInput = femaleCheckbox.value;
+            maleCheckbox.checked = false;
+            unknownCheckbox.checked = false;
+        }
+    });
 
+    unknownCheckbox.addEventListener('change', function () {
+        if (unknownCheckbox.checked) {
+            genderInput = unknownCheckbox.value;
+            maleCheckbox.checked = false;
+            femaleCheckbox.checked = false;
+        }
+    });
 
+    // Get the aggressive radio buttons
+    const aggressiveRadios = document.querySelectorAll("input[type='radio'][name='aggressive']");
 
+    // Initialize a variable to store the selected value
+    let selectedAggressive = null;
 
-    ///////////////////////////////////////////////////////////////////////////////
+    // Add event listeners to each radio button
+    aggressiveRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (radio.checked) {
+                selectedAggressive = radio.value;
+                console.log("Selected aggressive value:", selectedAggressive);
+            }
+        });
+    });
+
     // Function to check if check-in date is before check-out date
     function checkDates() {
         const checkInDate = new Date(document.getElementById('checkInDate').value);
@@ -37,40 +75,19 @@
     document.getElementById('checkInDate').addEventListener('change', checkDates);
     document.getElementById('checkOutDate').addEventListener('change', checkDates);
 
-    ///////////////////////////////////////////////////////////////////////////////
-
-    myform.addEventListener('load', (event) => { event.preventDefault(); });
+    // Prevent default form submission
+    myform.addEventListener('submit', (event) => { event.preventDefault(); });
 
     // Add click event listener to handle form submission
     submitButton.addEventListener('click', function () {
-        // Log the form data to the console
-
-        //console.log(weightInput.value, parseFloat(weightInput.value));
-        //console.log(ageInput.value, parseInt(ageInput.value));
-
         let ownername = ownernameInput.value;
         let email = emailInput.value;
         let petname = petnameInput.value;
         let type = typeInput.value;
-        let weight = parseFloat(weightInput.value); // Parse the value to float
-        let age = parseInt(ageInput.value); // Parse the value to integer
-
-        let gender = genderInput.value;
-
-        let aggressive = aggressiveInput.value;
-
-
-        /*
-            console.log({
-                ownername: ownername,
-                petname: petname,
-                type: type,
-                weight: weight,
-                age: age,
-                gender: gender,
-                aggressive: aggressive
-            });
-        */
+        let weight = parseFloat(weightInput.value);
+        let age = parseInt(ageInput.value);
+        let gender = genderInput;
+        let aggressive = selectedAggressive;
 
         const pet = {
             _ownername: ownername,
@@ -88,16 +105,10 @@
         };
 
         displayPetData(pet, "petview");
-
-        displayOwnerInfo(ownerinfo, "ownerview")
-
+        displayOwnerInfo(ownerinfo, "ownerview");
         setCookie(pet._petname, pet._type, 7);
-
         setinlocalstorage(pet._ownername + " has a ", pet._type);
-
-
     });
-
 
     // Function to display form data in HTML div
     function displayPetData(data, location) {
@@ -108,7 +119,7 @@
         <p>Age: ${data._age}</p>
         <p>Weight: ${data._weight}</p>
         <p>Gender: ${data._gender}</p>
-        <p>Aggressive: ${data._aggressive}</p>    `;
+        <p>Aggressive: ${data._aggressive}</p>`;
     }
 
     // Function to display form data in HTML div
@@ -116,9 +127,7 @@
         const displayDiv = document.getElementById(location);
         displayDiv.innerHTML = `
             <p>Owner name: ${data._ownername}</p>
-            <p>Email: ${data._email}</p> `;
+            <p>Email: ${data._email}</p>`;
     }
 
-
-
-})
+});
