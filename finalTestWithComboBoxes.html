@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Pet clinic</title>
+
+    <script src="main.js" type="module" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+    <div id="header">
+        <h1>Welcome to the pet clinic!🐕😉</h1>
+
+        <img id="petImage" src="cat.jpg" alt="Pet Image">
+        <script>
+            /////////////////////////////click on the image to change the picture//////////////////////////////////////////
+            function displayPetImage(callback) {
+                // Simulating fetching of pet images from a server
+                const petImages = [
+                    'cat.jpg',
+                    'dog.jpeg',
+                    'bird.jpg',
+                    'fish.jpg',
+                    'reptile.jpg'
+                ];
+
+                // Generate a random index to select a pet image
+                const randomIndex = Math.floor(Math.random() * petImages.length);
+                const randomPetImage = petImages[randomIndex];
+
+                // Call the callback function with the selected image
+                callback(randomPetImage);
+            }
+
+            function displayImage(imageUrl) {
+                // Get the pet image element
+                const petImageElement = document.getElementById('petImage');
+
+                // Set the src attribute of the image element to display the pet image
+                petImageElement.src = imageUrl;
+            }
+
+            // Call the displayPetImage function with the displayImage callback
+            displayPetImage(displayImage);
+            // Add event listener to change image on click
+            const petImageElement = document.getElementById('petImage');
+            petImageElement.addEventListener('click', function () {
+                displayPetImage(displayImage);
+            });
+            ///////////////////////////////////////////////////////////////////////
+        </script>
+    </div>
+
+    <h2>Pet clinic 🏥🐶🐱</h2>
+    <form id="MyForm" class="form">
+
+        <section class="section_Owner_Info">
+            <label for="ownername">Owner Name:</label>
+            <input type="text" id="ownername" name="ownername" value="John Doe" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="whatever@go.ro" required>
+
+            <hr>
+        </section>
+
+        <section class="section_Pet_info">
+            <label for="petname">Name:</label>
+            <input type="text" id="petname" name="petname" value="Fifa">
+
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="dog">Dog</option>
+                <option value="cat" selected>Cat</option>
+                <option value="bird">Bird</option>
+                <option value="fish">Fish</option>
+                <option value="reptile">Reptile</option>
+            </select>
+            <br><br>
+
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight">
+            <br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+            <br><br>
+
+            <label>Animal gender:</label>
+            <div>
+                <label>
+                    <input type="checkbox" id="male" name="selectGender" value="male"> Male
+                </label><br>
+                <label>
+                    <input type="checkbox" id="female" name="selectGender" value="female"> Female
+                </label><br>
+                <label>
+                    <input type="checkbox" id="unknown" name="selectGender" value="unknown"> Unknown
+                </label>
+            </div>
+
+
+            <label>Aggressive:</label>
+            <div>
+                <label>
+                    <input type="radio" name="aggressive" value="Yes"> Yes
+                </label>
+                <label>
+                    <input type="radio" name="aggressive" value="No"> No
+                </label>
+            </div>
+
+            <hr>
+        </section>
+
+        <section class="conclusions">
+
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate">
+
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate">
+
+            <label for="disease">Disease:</label>
+            <input type="text" id="disease" name="disease" value="Intestinal Parasites"><br><br>
+
+            <label for="medication">Medication:</label>
+            <input type="text" id="medication" name="medication" value="fenbendazole"><br><br>
+
+            <label for="vaccine">Vaccine History:</label>
+            <input type="text" id="vaccine" name="vaccine" value="none"><br><br>
+
+            <hr>
+        </section>
+
+
+
+
+        <div class="container">
+            <div id="petview" class="left-wrapper">
+
+            </div>
+            <div id="ownerview" class="right-wrapper">
+
+            </div>
+        </div>
+
+        <button type="button" id="submitButton">Add the pet</button>
+
+    </form>
+</body>
+
+</html>
+
+
