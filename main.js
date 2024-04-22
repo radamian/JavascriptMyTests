@@ -20,30 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize genderInput to the initially checked checkbox
     let genderInput = null;
 
-    // Add event listeners to each checkbox
-    maleCheckbox.addEventListener('change', function () {
-        if (maleCheckbox.checked) {
-            genderInput = maleCheckbox.value;
-            femaleCheckbox.checked = false;
-            unknownCheckbox.checked = false;
-        }
-    });
 
-    femaleCheckbox.addEventListener('change', function () {
-        if (femaleCheckbox.checked) {
-            genderInput = femaleCheckbox.value;
-            maleCheckbox.checked = false;
-            unknownCheckbox.checked = false;
-        }
-    });
-
-    unknownCheckbox.addEventListener('change', function () {
-        if (unknownCheckbox.checked) {
-            genderInput = unknownCheckbox.value;
-            maleCheckbox.checked = false;
-            femaleCheckbox.checked = false;
-        }
-    });
 
     // Get the aggressive radio buttons
     const aggressiveRadios = document.querySelectorAll("input[type='radio'][name='aggressive']");
@@ -86,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let type = typeInput.value;
         let weight = parseFloat(weightInput.value);
         let age = parseInt(ageInput.value);
-        let gender = genderInput;
+        const gender = document.querySelector('input[name=gender]:checked')?.value
+        console.log({ gender });
         let aggressive = selectedAggressive;
 
         const pet = {
