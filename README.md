@@ -1,12 +1,12 @@
-Most of the files here are test files.
+Most of the files here are test files. All was tested with a live server extension installed in VS Code.
 
-The main files:
+The main files for the working project:
 
-finalTest.html
+**finalTest.html
 main.js
 style.css
-modules\storage.js
+modules\storage.js**
 
 and 
 
-the pet images: cat.jpg, dog.jpeg, bird.jpg, fish.jpg, reptile.jpg
+the pet images: **cat.jpg, dog.jpeg, bird.jpg, fish.jpg, reptile.jpg**
